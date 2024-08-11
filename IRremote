@@ -1,0 +1,20 @@
+#include <IRremote.h>                                                //Libreria para utilizar los comandos del control infrarojo.
+int IRpin = 9;                                                       //Asignación de pin que captura la señal del control.
+
+void setup() {
+  Serial.begin(9600);
+  IrReceiver.begin(IRpin);                                           //Inicializar recepción de señal en el pin asignado.
+}
+
+void loop() {
+  while (IrReceiver.decode() == 0) {
+  }
+  int signal = IrReceiver.decodedIRData.command;                     //Señal obtenida del control númerico almacenada en una variable entera con el nombre de signal.
+  Serial.println(signal);                                            //Visualización de valor numerico obtenido al presionar un botón.
+  delay(50);
+  IrReceiver.resume();
+
+  if (signal == 16) {                                                  //Condición para realizar una acción cuando se presiona un botón.
+
+    }
+}
